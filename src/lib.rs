@@ -23,7 +23,7 @@
 //!     &mut self,
 //!     waker: &Waker,
 //!     buf: &[u8],
-//!     target: impl AsRef<Self::Target>,
+//!     target: &Self::Target,
 //!   ) -> Poll<Result<usize, Self::Err>> {
 //!     Poll::Ready(Ok(0))
 //!   }
@@ -32,7 +32,7 @@
 //!     &mut self,
 //!     waker: &Waker,
 //!     buf: &mut [u8],
-//!   ) -> Poll<Result<(usize, Self::Target), Self::Err>> {
+//!   ) -> Poll<Result<(usize, std::net::SocketAddr), Self::Err>> {
 //!     Poll::Pending
 //!   }
 //! }
@@ -45,7 +45,10 @@ use std::task::{Poll, Waker};
 /// Implement a datagram protocol.
 pub trait AsyncDatagram {
   /// Specifies which target to send the data to.
-  type Target;
+  type Sender;
+
+  /// Specifies which target the data was received from.
+  type Receiver;
 
   /// The type of failures yielded by this trait.
   type Err;
@@ -57,7 +60,7 @@ pub trait AsyncDatagram {
     &mut self,
     waker: &Waker,
     buf: &[u8],
-    target: impl AsRef<Self::Target>,
+    receiver: &Self::Receiver,
   ) -> Poll<Result<usize, Self::Err>>;
 
   /// Receives data from the IO interface.
@@ -68,5 +71,5 @@ pub trait AsyncDatagram {
     &mut self,
     waker: &Waker,
     buf: &mut [u8],
-  ) -> Poll<Result<(usize, Self::Target), Self::Err>>;
+  ) -> Poll<Result<(usize, Self::Sender), Self::Err>>;
 }

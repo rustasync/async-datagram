@@ -18,7 +18,7 @@ use async_datagram::AsyncDatagram;
 struct Udp;
 
 impl AsyncDatagram for Udp {
-  type Target = std::net::SocketAddr
+  type Target = std::net::SocketAddr;
   type Err = io::Error;
 
   fn poll_send_to(
@@ -34,7 +34,7 @@ impl AsyncDatagram for Udp {
     &mut self,
     waker: &Waker,
     buf: &mut [u8],
-  ) -> Poll<Result<(usize, Self::Target), Self::Err>> {
+  ) -> Poll<Result<(usize, std::net::SocketAddr), Self::Err>> {
     Poll::Pending
   }
 }
