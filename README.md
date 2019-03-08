@@ -14,18 +14,20 @@ __Basic usage__
 #![feature(futures_api)]
 
 use async_datagram::AsyncDatagram;
+use std::task::{Waker, Poll};
 
 struct Udp;
 
 impl AsyncDatagram for Udp {
-  type Target = std::net::SocketAddr;
-  type Err = io::Error;
+  type Sender = std::net::SocketAddr;
+  type Receiver = std::net::SocketAddr;
+  type Err = std::io::Error;
 
   fn poll_send_to(
     &mut self,
     waker: &Waker,
     buf: &[u8],
-    target: Self::Target,
+    target: &Self::Receiver,
   ) -> Poll<Result<usize, Self::Err>> {
     Poll::Ready(Ok(0))
   }
@@ -34,7 +36,7 @@ impl AsyncDatagram for Udp {
     &mut self,
     waker: &Waker,
     buf: &mut [u8],
-  ) -> Poll<Result<(usize, std::net::SocketAddr), Self::Err>> {
+  ) -> Poll<Result<(usize, Self::Sender), Self::Err>> {
     Poll::Pending
   }
 }
