@@ -66,14 +66,14 @@ None.
 
 [1]: https://img.shields.io/crates/v/async-datagram.svg?style=flat-square
 [2]: https://crates.io/crates/async-datagram
-[3]: https://img.shields.io/travis/yoshuawuyts/async-datagram/master.svg?style=flat-square
-[4]: https://travis-ci.org/yoshuawuyts/async-datagram
+[3]: https://img.shields.io/travis/rustasync/async-datagram/master.svg?style=flat-square
+[4]: https://travis-ci.org/rustasync/async-datagram
 [5]: https://img.shields.io/crates/d/async-datagram.svg?style=flat-square
 [6]: https://crates.io/crates/async-datagram
 [7]: https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square
 [8]: https://docs.rs/async-datagram
 
-[releases]: https://github.com/yoshuawuyts/async-datagram/releases
-[contributing]: https://github.com/yoshuawuyts/async-datagram/blob/master.github/CONTRIBUTING.md
-[good-first-issue]: https://github.com/yoshuawuyts/async-datagram/labels/good%20first%20issue
-[help-wanted]: https://github.com/yoshuawuyts/async-datagram/labels/help%20wanted
+[releases]: https://github.com/rustasync/async-datagram/releases
+[contributing]: https://github.com/rustasync/async-datagram/blob/master.github/CONTRIBUTING.md
+[good-first-issue]: https://github.com/rustasync/async-datagram/labels/good%20first%20issue
+[help-wanted]: https://github.com/rustasync/async-datagram/labels/help%20wanted

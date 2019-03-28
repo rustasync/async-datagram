@@ -2,12 +2,12 @@
 name = "async-datagram"
 version = "2.0.0"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/yoshuawuyts/async-datagram"
+repository = "https://github.com/rustasync/async-datagram"
 documentation = "https://docs.rs/async-datagram"
 description = "Async datagram traits."
 keywords = ["async", "datagram", "udp", "packet", "futures"]
 categories = ["asynchronous", "network-programming", "web-programming"]
-authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
+authors = ["The Rust Async Ecosystem Working Group"]
 readme = "README.md"
 edition = "2018"
 
