@@ -11,7 +11,8 @@
 //! #![feature(futures_api)]
 //!
 //! use async_datagram::AsyncDatagram;
-//! use std::task::{Waker, Poll};
+//! use std::task::{Context, Poll};
+//! use std::pin::Pin;
 //!
 //! struct Udp;
 //!
@@ -21,8 +22,8 @@
 //!   type Err = std::io::Error;
 //!
 //!   fn poll_send_to(
-//!     &mut self,
-//!     waker: &Waker,
+//!     self: Pin<&mut Self>,
+//!     cx: &mut Context<'_>,
 //!     buf: &[u8],
 //!     target: &Self::Receiver,
 //!   ) -> Poll<Result<usize, Self::Err>> {
@@ -30,8 +31,8 @@
 //!   }
 //!
 //!   fn poll_recv_from(
-//!     &mut self,
-//!     waker: &Waker,
+//!     self: Pin<&mut Self>,
+//!     cx: &mut Context<'_>,
 //!     buf: &mut [u8],
 //!   ) -> Poll<Result<(usize, Self::Sender), Self::Err>> {
 //!     Poll::Pending
@@ -41,7 +42,8 @@
 
 #![feature(futures_api)]
 
-use std::task::{Poll, Waker};
+use std::pin::Pin;
+use std::task::{Context, Poll};
 
 /// Implement a datagram protocol.
 pub trait AsyncDatagram {
@@ -58,8 +60,8 @@ pub trait AsyncDatagram {
   ///
   /// On success, returns the number of bytes written.
   fn poll_send_to(
-    &mut self,
-    waker: &Waker,
+    self: Pin<&mut Self>,
+    cx: &mut Context<'_>,
     buf: &[u8],
     receiver: &Self::Receiver,
   ) -> Poll<Result<usize, Self::Err>>;
@@ -69,8 +71,8 @@ pub trait AsyncDatagram {
   /// On success, returns the number of bytes read and the target from whence
   /// the data came.
   fn poll_recv_from(
-    &mut self,
-    waker: &Waker,
+    self: Pin<&mut Self>,
+    cx: &mut Context<'_>,
     buf: &mut [u8],
   ) -> Poll<Result<(usize, Self::Sender), Self::Err>>;
 }
