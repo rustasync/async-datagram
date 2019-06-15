@@ -8,8 +8,6 @@
 //! ## Example
 //!
 //! ```rust
-//! #![feature(futures_api)]
-//!
 //! use async_datagram::AsyncDatagram;
 //! use std::task::{Context, Poll};
 //! use std::pin::Pin;
@@ -39,8 +37,6 @@
 //!   }
 //! }
 //! ```
-
-#![feature(futures_api)]
 
 use std::pin::Pin;
 use std::task::{Context, Poll};
