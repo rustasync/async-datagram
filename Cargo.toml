@@ -1,6 +1,6 @@
 [package]
 name = "async-datagram"
-version = "2.2.0"
+version = "3.0.0"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/rustasync/async-datagram"
 documentation = "https://docs.rs/async-datagram"
