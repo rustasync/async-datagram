@@ -8,8 +8,6 @@
 //! ## Example
 //!
 //! ```rust
-//! #![feature(futures_api)]
-//!
 //! use async_datagram::AsyncDatagram;
 //! use std::task::{Context, Poll};
 //! use std::pin::Pin;
@@ -40,8 +38,6 @@
 //! }
 //! ```
 
-#![feature(futures_api)]
-
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
@@ -70,6 +66,7 @@ pub trait AsyncDatagram {
   ///
   /// On success, returns the number of bytes read and the target from whence
   /// the data came.
+  #[allow(clippy::type_complexity)]
   fn poll_recv_from(
     self: Pin<&mut Self>,
     cx: &mut Context<'_>,

@@ -11,8 +11,6 @@ Async datagram traits.
 ## Examples
 __Basic usage__
 ```rust
-#![feature(futures_api)]
-
 use async_datagram::AsyncDatagram;
 use std::task::{Context, Poll};
 use std::pin::Pin;
