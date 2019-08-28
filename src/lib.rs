@@ -2,6 +2,7 @@
 #![deny(missing_debug_implementations, bad_style)]
 #![deny(missing_docs)]
 #![cfg_attr(test, deny(warnings))]
+#![no_std]
 
 //! Async datagram traits.
 //!
@@ -38,8 +39,14 @@
 //! }
 //! ```
 
-use std::pin::Pin;
-use std::task::{Context, Poll};
+mod ext;
+
+pub use ext::{AsyncDatagramExt, RecvFrom, SendTo};
+
+use core::{
+  pin::Pin,
+  task::{Context, Poll},
+};
 
 /// Implement a datagram protocol.
 pub trait AsyncDatagram {
