@@ -43,6 +43,7 @@ impl<T: AsyncDatagram> AsyncDatagramExt for T {}
 
 /// Future for the [`send_to`](AsyncDatagramExt::send_to) method.
 #[derive(Debug)]
+#[must_use = "futures do nothing unless you `.await` or poll them"]
 pub struct SendTo<'a, T: AsyncDatagram + ?Sized> {
   socket: &'a mut T,
   buf: &'a [u8],
@@ -64,6 +65,7 @@ impl<T: AsyncDatagram + Unpin + ?Sized> Future for SendTo<'_, T> {
 
 /// Future for the [`recv_from`](AsyncDatagramExt::recv_from) method.
 #[derive(Debug)]
+#[must_use = "futures do nothing unless you `.await` or poll them"]
 pub struct RecvFrom<'a, T: AsyncDatagram + ?Sized> {
   socket: &'a mut T,
   buf: &'a mut [u8],
